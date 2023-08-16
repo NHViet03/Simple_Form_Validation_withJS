@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://kit.fontawesome.com/7e2de2e1cc.js" crossorigin="anonymous"></script>   
+    <link rel="icon" type="image/x-icon" href="./assets/img/logo.jpg">
+
+</head>
+<body>
+    <div class="container">
+        <form action="" method="POST" class="form" id="form-1">
+            <!-- Heading -->
+            <div class="heading">
+                <h3>Create You Account</h3>
+                <p>Welcome back! Please enter your details</p>
+            </div>
+            <!-- Another Sign Up -->
+            <div class="another-sign-up">
+                <div class="sign-up--item">
+                    <svg class="sign-up--item-icon" xmlns="http://www.w3.org/2000/svg" width="705.6" height="720" viewBox="0 0 186.69 190.5" xmlns:v="https://vecta.io/nano"><g transform="translate(1184.583 765.171)"><path clip-path="none" mask="none" d="M-1089.333-687.239v36.888h51.262c-2.251 11.863-9.006 21.908-19.137 28.662l30.913 23.986c18.011-16.625 28.402-41.044 28.402-70.052 0-6.754-.606-13.249-1.732-19.483z" fill="#4285f4"></path><path clip-path="none" mask="none" d="M-1142.714-651.791l-6.972 5.337-24.679 19.223h0c15.673 31.086 47.796 52.561 85.03 52.561 25.717 0 47.278-8.486 63.038-23.033l-30.913-23.986c-8.486 5.715-19.31 9.179-32.125 9.179-24.765 0-45.806-16.712-53.34-39.226z" fill="#34a853"></path><path clip-path="none" mask="none" d="M-1174.365-712.61c-6.494 12.815-10.217 27.276-10.217 42.689s3.723 29.874 10.217 42.689c0 .086 31.693-24.592 31.693-24.592-1.905-5.715-3.031-11.776-3.031-18.098s1.126-12.383 3.031-18.098z" fill="#fbbc05"></path><path d="M-1089.333-727.244c14.028 0 26.497 4.849 36.455 14.201l27.276-27.276c-16.539-15.413-38.013-24.852-63.731-24.852-37.234 0-69.359 21.388-85.032 52.561l31.692 24.592c7.533-22.514 28.575-39.226 53.34-39.226z" fill="#ea4335" clip-path="none" mask="none"></path></g></svg>
+                    <span>Sign up with Google</span>
+                </div>
+                <div class="saperator">OR</div>
+            </div>
+
+            <!-- Form Group -->
+            <div class="form-group">
+                <label for="fullname" class="form-label">Name</label>
+                <input id="fullname" type="text" name="fullname" placeholder="Enter your name" class="form-control">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" type="text" name="email" placeholder="Enter your email" class="form-control">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input id="password" type="password" name="password" placeholder="Enter your password" class="form-control">
+                <span class="form-message"></span>
+                <span class="show-hide-password">
+                    <i class="fa-solid fa-eye-slash hide-password-icon"></i>
+                    <i class="fa-solid fa-eye show-password-icon"></i>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password" class="form-label">Retype Password</label>
+                <input id="confirm-password" type="password" name="confirm-password" placeholder="Confirm your password" class="form-control">
+                <span class="form-message"></span>
+                <span class="show-hide-password">
+                    <i class="fa-solid fa-eye-slash hide-password-icon"></i>
+                    <i class="fa-solid fa-eye show-password-icon"></i>
+                </span>
+            </div>
+             
+            <!-- Terms and Policy -->
+            <div class="term-policy">
+                <input type="checkbox" name="confirm-policy">
+                <span>I accepted all terms & conditions.</span>
+            </div>
+            <!--Button Submit -->
+            <button class="form-submit">Sign In</button>
+            <footer class="form-footer">
+                <p>Already have an account? <span> Sign in</span></p>
+            </footer>
+        </form>
+        <div class="intro">
+            <h2 class="intro-heading">Our Common Room Cafe
+                <br> The Art of Coffee</h2>
+            <p class="intro-desc">Lorem ipsum dolor sit amet, no pro dicunt fabulas inermis. Duis albucius tractatos vis ne. Sea an novum exerci. In quaeque nusquam torquatos sed. Vix populo urbanitas ea, elit vituperata an sea. Sed veri numquam necessitatibus an.
+            </p>
+            <div class="intro-list-img">
+                <img alt="Cosmestics Store" class="intro-img">
+                <span class="btn btn-back">
+                    <i class="fa-solid fa-arrow-left-long"></i>
+                </span>
+                <span class="btn btn-next">
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                </span>
+            </div>
+            <div class="img-pagination">
+            </div>
+        </div>
+    </div>
+
+    <!-- Design from: https://dribbble.com/shots/22202743-Admin-Dashboard-Sign-Up-UI-UX-Design -->
+
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/validation.js"></script>
+    <script>
+        Validator({
+            form:'#form-1',
+            errSelector:'.form-message',
+            rules:[
+                Validator.isRequired('#fullname'),
+                Validator.isEmail('#email'),
+                Validator.isAtLeast('#password',6),
+            ]
+        });
+    </script>
+</body>
+</html>
