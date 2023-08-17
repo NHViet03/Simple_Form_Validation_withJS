@@ -29,17 +29,17 @@
             <!-- Form Group -->
             <div class="form-group">
                 <label for="fullname" class="form-label">Name</label>
-                <input id="fullname" type="text" name="fullname" placeholder="Enter your name" class="form-control">
+                <input id="fullname" type="text" rules="required" name="fullname" placeholder="Enter your name" class="form-control">
                 <span class="form-message"></span>
             </div>
             <div class="form-group">
                 <label for="email" class="form-label">Email</label>
-                <input id="email" type="text" name="email" placeholder="Enter your email" class="form-control">
+                <input id="email" type="text" rules="required|email" name="email" placeholder="Enter your email" class="form-control">
                 <span class="form-message"></span>
             </div>
             <div class="form-group">
                 <label for="password" class="form-label">Password</label>
-                <input id="password" type="password" name="password" placeholder="Enter your password" class="form-control">
+                <input id="password" type="password" rules="required|min:6" name="password" placeholder="Enter your password" class="form-control">
                 <span class="form-message"></span>
                 <span class="show-hide-password">
                     <i class="fa-solid fa-eye-slash hide-password-icon"></i>
@@ -48,7 +48,7 @@
             </div>
             <div class="form-group">
                 <label for="confirm-password" class="form-label">Retype Password</label>
-                <input id="confirm-password" type="password" name="confirm-password" placeholder="Confirm your password" class="form-control">
+                <input id="confirm-password" type="password"  rules ="required|confirm:password" name="confirm-password" placeholder="Confirm your password" class="form-control">
                 <span class="form-message"></span>
                 <span class="show-hide-password">
                     <i class="fa-solid fa-eye-slash hide-password-icon"></i>
@@ -57,9 +57,11 @@
             </div>
              
             <!-- Terms and Policy -->
-            <div class="term-policy">
-                <input type="checkbox" name="confirm-policy">
-                <span>I accepted all terms & conditions.</span>
+            <div class="form-group term-policy">
+                <input id="confirm-policy" rules="checked" name="confirm-policy" type="checkbox" value="checked" >
+                <label for="confirm-policy">I accepted all terms & conditions.</label>
+                <span class="form-message"></span>
+
             </div>
             <!--Button Submit -->
             <button class="form-submit">Sign In</button>
@@ -90,16 +92,37 @@
 
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/validation.js"></script>
+    <script src="./assets/js/validation2.js"></script>
     <script>
-        Validator({
+        // Form Validation Method 1
+        /*Validator({
             form:'#form-1',
+            formGroupSelector:'.form-group',    
             errSelector:'.form-message',
             rules:[
                 Validator.isRequired('#fullname'),
+                Validator.isRequired('#email'),
+                Validator.isRequired('#password'),
+                Validator.isRequired('#confirm-password'),
                 Validator.isEmail('#email'),
-                Validator.isAtLeast('#password',6),
-            ]
-        });
+                Validator.isAtLeast('#password',6,'Password'),
+                Validator.isConfirm('#confirm-password',function(){
+                    return $('#form-1 #password').value;
+                },'Confirm Password'),
+                Validator.isChecked('#confirm-policy','Terms & Conditions'),
+            ],
+            onSubmit:function(value){
+                //Call API
+                console.log(value);
+            }
+        });*/
+
+        //Form Validation Method 2
+        var form= new Validator('#form-1');
+        form.onSubmit = function(data){
+            //Call API
+            console.log(data);
+        }
     </script>
 </body>
 </html>

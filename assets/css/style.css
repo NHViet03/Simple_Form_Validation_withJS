@@ -129,7 +129,10 @@ body{
     color: #f33a58;
   }
 .form-message{
+    display: block;
     font-size: 12px;
+    color: #f33a58;
+    line-height: 16px;
 }
 
 .show-hide-password{
@@ -155,12 +158,13 @@ body{
 
 /* Terms and Policy */
 .term-policy{
+   display: block;
    margin-bottom: 24px;
 }
 .term-policy input{
     transform: translateY(3px);
 }
-.term-policy span{
+.term-policy label{
     padding-left: 2px;
     text-align: left;
     font-size: 12px;
@@ -222,11 +226,10 @@ body{
     z-index: 1;
 }
 .intro-img{
-    width:450%;
-    max-width: 80%;
-    height:400px;
-    max-height: 60%;
+    width:450px;
+    height: 420px;
     border-radius: 20px;
+    object-fit: cover;
 }
 .intro-img:hover{
     transform: scale(1.005);
@@ -256,6 +259,7 @@ body{
 
 /* Image Pagination */
 .img-pagination{
+    margin-bottom: 20px;
 }
 .img-index{
     font-size: 8px;
@@ -264,6 +268,7 @@ body{
 }
 .img-index.active .img-index-fill{
     display: inline-block;
+    filter: brightness(1.25);
 }
 .img-index.active .img-index-empty{
     display: none
